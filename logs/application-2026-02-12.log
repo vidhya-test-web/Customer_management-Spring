@@ -1,0 +1,45 @@
+2026-02-12 14:49:44 [main] INFO  CustomerManagementServiceApplication - Starting CustomerManagementServiceApplication using Java 17.0.12 with PID 14552 (C:\java Course\Spring\customer-management-service\target\classes started by vidhy in C:\java Course\Spring\customer-management-service)
+2026-02-12 14:49:44 [main] INFO  CustomerManagementServiceApplication - The following 1 profile is active: "dev"
+2026-02-12 14:49:45 [main] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-12 14:49:45 [main] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 139 ms. Found 4 JPA repository interfaces.
+2026-02-12 14:49:46 [main] INFO  TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-02-12 14:49:46 [main] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+2026-02-12 14:49:46 [main] INFO  StandardService - Starting service [Tomcat]
+2026-02-12 14:49:46 [main] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-12 14:49:46 [main] INFO  WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2470 ms
+2026-02-12 14:49:47 [main] INFO  jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-12 14:49:47 [main] INFO  core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-12 14:49:47 [main] INFO  cache - HHH90001028: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+2026-02-12 14:49:48 [main] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-12 14:49:48 [main] INFO  HikariDataSource - HikariPool-1 - Starting...
+2026-02-12 14:49:49 [main] INFO  HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b5b9521
+2026-02-12 14:49:49 [main] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2026-02-12 14:49:49 [main] WARN  deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-12 14:49:49 [main] INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/retail_banking_db?allowPublicKeyRetrieval=true&useSSL=false]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: retail_banking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-12 14:49:51 [main] INFO  core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-12 14:49:51 [main] DEBUG SQL - create table roles (id integer not null auto_increment, name enum ('ROLE_ADMIN','ROLE_MODERATOR','ROLE_USER'), primary key (id)) engine=InnoDB
+2026-02-12 14:49:51 [main] DEBUG SQL - create table user_roles (user_id bigint not null, role_id integer not null, primary key (user_id, role_id)) engine=InnoDB
+2026-02-12 14:49:51 [main] DEBUG SQL - create table users (id bigint not null auto_increment, email varchar(255), password varchar(255), username varchar(255), primary key (id)) engine=InnoDB
+2026-02-12 14:49:51 [main] DEBUG SQL - alter table users drop index UKr43af9ap4edm43mmtq01oddj6
+2026-02-12 14:49:51 [main] DEBUG SQL - alter table users add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username)
+2026-02-12 14:49:51 [main] DEBUG SQL - alter table users drop index UK6dotkott2kjsp8vw4d0m25fb7
+2026-02-12 14:49:51 [main] DEBUG SQL - alter table users add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email)
+2026-02-12 14:49:51 [main] DEBUG SQL - alter table user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles (id)
+2026-02-12 14:49:51 [main] DEBUG SQL - alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users (id)
+2026-02-12 14:49:52 [main] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-12 14:49:52 [main] INFO  QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-12 14:49:52 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-12 14:49:53 [main] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+2026-02-12 14:49:53 [main] INFO  TomcatWebServer - Tomcat started on port 8084 (http) with context path '/customer-mgmt'
+2026-02-12 14:49:53 [main] INFO  CustomerManagementServiceApplication - Started CustomerManagementServiceApplication in 9.93 seconds (process running for 10.819)

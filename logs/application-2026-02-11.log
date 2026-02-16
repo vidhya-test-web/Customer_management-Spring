@@ -1,0 +1,474 @@
+2026-02-11 14:20:55 [main] INFO  CustomerManagementServiceApplication - Starting CustomerManagementServiceApplication using Java 17.0.12 with PID 34096 (C:\java Course\Spring\customer-management-service\target\classes started by vidhy in C:\java Course\Spring\customer-management-service)
+2026-02-11 14:20:55 [main] INFO  CustomerManagementServiceApplication - The following 1 profile is active: "dev"
+2026-02-11 14:20:57 [main] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-11 14:20:57 [main] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 73 ms. Found 2 JPA repository interfaces.
+2026-02-11 14:20:58 [main] INFO  TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-02-11 14:20:58 [main] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+2026-02-11 14:20:58 [main] INFO  StandardService - Starting service [Tomcat]
+2026-02-11 14:20:58 [main] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-11 14:20:58 [main] INFO  WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2370 ms
+2026-02-11 14:20:58 [main] INFO  jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-11 14:20:58 [main] INFO  core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-11 14:20:58 [main] INFO  cache - HHH90001028: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+2026-02-11 14:20:59 [main] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-11 14:20:59 [main] INFO  HikariDataSource - HikariPool-1 - Starting...
+2026-02-11 14:21:00 [main] INFO  HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@591e5fd4
+2026-02-11 14:21:00 [main] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2026-02-11 14:21:00 [main] WARN  deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-11 14:21:00 [main] INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/retail_banking_db?allowPublicKeyRetrieval=true&useSSL=false]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: retail_banking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-11 14:21:01 [main] INFO  core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-11 14:21:01 [main] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-11 14:21:01 [main] INFO  QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-11 14:21:02 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-11 14:21:02 [main] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+2026-02-11 14:21:02 [main] INFO  TomcatWebServer - Tomcat started on port 8084 (http) with context path '/customer-mgmt'
+2026-02-11 14:21:02 [main] INFO  CustomerManagementServiceApplication - Started CustomerManagementServiceApplication in 7.427 seconds (process running for 8.753)
+2026-02-11 14:21:30 [http-nio-8084-exec-1] INFO  [/customer-mgmt] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-11 14:21:30 [http-nio-8084-exec-1] INFO  DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-11 14:21:30 [http-nio-8084-exec-1] INFO  DispatcherServlet - Completed initialization in 4 ms
+2026-02-11 14:21:30 [http-nio-8084-exec-1] INFO  CustomerDetailsController - POST /api/customers called
+2026-02-11 14:21:30 [http-nio-8084-exec-1] INFO  CustomerDetailsServiceImpl - Create customer request received. customerCode=CUST1001
+2026-02-11 14:21:31 [http-nio-8084-exec-1] DEBUG SQL - select c1_0.customer_id from customer c1_0 where c1_0.customer_code=? limit ?
+2026-02-11 14:21:31 [http-nio-8084-exec-1] WARN  CustomerDetailsServiceImpl - Customer already exists. customerCode=CUST1001
+2026-02-11 14:21:31 [http-nio-8084-exec-1] ERROR CustomerDetailsServiceImpl - Error while creating customer. customerCode=CUST1001
+java.lang.IllegalArgumentException: Customer code already exists
+	at com.bank.customermanagement.customer_management_service.serviceImpl.CustomerDetailsServiceImpl.createCustomer(CustomerDetailsServiceImpl.java:36)
+	at com.bank.customermanagement.customer_management_service.controller.CustomerDetailsController.createCustomer(CustomerDetailsController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-02-11 14:21:31 [http-nio-8084-exec-1] ERROR [dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/customer-mgmt] threw exception [Request processing failed: java.lang.IllegalArgumentException: Customer code already exists] with root cause
+java.lang.IllegalArgumentException: Customer code already exists
+	at com.bank.customermanagement.customer_management_service.serviceImpl.CustomerDetailsServiceImpl.createCustomer(CustomerDetailsServiceImpl.java:36)
+	at com.bank.customermanagement.customer_management_service.controller.CustomerDetailsController.createCustomer(CustomerDetailsController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-02-11 14:23:32 [main] INFO  CustomerManagementServiceApplication - Starting CustomerManagementServiceApplication using Java 17.0.12 with PID 30760 (C:\java Course\Spring\customer-management-service\target\classes started by vidhy in C:\java Course\Spring\customer-management-service)
+2026-02-11 14:23:32 [main] INFO  CustomerManagementServiceApplication - The following 1 profile is active: "dev"
+2026-02-11 14:23:33 [main] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-11 14:23:33 [main] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 2 JPA repository interfaces.
+2026-02-11 14:23:34 [main] INFO  TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-02-11 14:23:34 [main] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+2026-02-11 14:23:34 [main] INFO  StandardService - Starting service [Tomcat]
+2026-02-11 14:23:34 [main] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-11 14:23:34 [main] INFO  WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2263 ms
+2026-02-11 14:23:35 [main] INFO  jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-11 14:23:35 [main] INFO  core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-11 14:23:35 [main] INFO  cache - HHH90001028: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+2026-02-11 14:23:35 [main] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-11 14:23:35 [main] INFO  HikariDataSource - HikariPool-1 - Starting...
+2026-02-11 14:23:36 [main] INFO  HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b485c8b
+2026-02-11 14:23:36 [main] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2026-02-11 14:23:36 [main] WARN  deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-11 14:23:36 [main] INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/retail_banking_db?allowPublicKeyRetrieval=true&useSSL=false]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: retail_banking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-11 14:23:37 [main] INFO  core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-11 14:23:37 [main] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-11 14:23:37 [main] INFO  QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-11 14:23:37 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-11 14:23:38 [main] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+2026-02-11 14:23:38 [main] INFO  TomcatWebServer - Tomcat started on port 8084 (http) with context path '/customer-mgmt'
+2026-02-11 14:23:38 [main] INFO  CustomerManagementServiceApplication - Started CustomerManagementServiceApplication in 6.546 seconds (process running for 7.388)
+2026-02-11 14:23:47 [http-nio-8084-exec-2] INFO  [/customer-mgmt] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-11 14:23:47 [http-nio-8084-exec-2] INFO  DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-11 14:23:47 [http-nio-8084-exec-2] INFO  DispatcherServlet - Completed initialization in 2 ms
+2026-02-11 14:23:48 [http-nio-8084-exec-2] WARN  DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal unquoted character ((CTRL-CHAR, code 13)): has to be escaped using backslash to be included in string value]
+2026-02-11 14:23:57 [http-nio-8084-exec-4] INFO  CustomerDetailsController - POST /api/customers called
+2026-02-11 14:23:57 [http-nio-8084-exec-4] INFO  CustomerDetailsServiceImpl - Create customer request received. customerCode=CUST1002
+2026-02-11 14:23:58 [http-nio-8084-exec-4] DEBUG SQL - select c1_0.customer_id from customer c1_0 where c1_0.customer_code=? limit ?
+2026-02-11 14:23:58 [http-nio-8084-exec-4] DEBUG SQL - insert into customer (created_date,customer_code,customer_type,date_of_birth,email,first_name,gender,last_name,mobile_number,status,updated_date) values (?,?,?,?,?,?,?,?,?,?,?)
+2026-02-11 14:23:58 [http-nio-8084-exec-4] INFO  CustomerDetailsServiceImpl - Customer created successfully. customerId=2, customerCode=CUST1002
+2026-02-11 14:25:58 [http-nio-8084-exec-7] INFO  CustomerDetailsController - POST /api/customers called
+2026-02-11 14:25:58 [http-nio-8084-exec-7] INFO  CustomerDetailsServiceImpl - Create customer request received. customerCode=CUST1002
+2026-02-11 14:25:58 [http-nio-8084-exec-7] DEBUG SQL - select c1_0.customer_id from customer c1_0 where c1_0.customer_code=? limit ?
+2026-02-11 14:25:58 [http-nio-8084-exec-7] WARN  CustomerDetailsServiceImpl - Customer already exists. customerCode=CUST1002
+2026-02-11 14:25:58 [http-nio-8084-exec-7] ERROR CustomerDetailsServiceImpl - Error while creating customer. customerCode=CUST1002
+java.lang.IllegalArgumentException: Customer code already exists
+	at com.bank.customermanagement.customer_management_service.serviceImpl.CustomerDetailsServiceImpl.createCustomer(CustomerDetailsServiceImpl.java:36)
+	at com.bank.customermanagement.customer_management_service.controller.CustomerDetailsController.createCustomer(CustomerDetailsController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-02-11 14:25:58 [http-nio-8084-exec-7] ERROR [dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/customer-mgmt] threw exception [Request processing failed: java.lang.IllegalArgumentException: Customer code already exists] with root cause
+java.lang.IllegalArgumentException: Customer code already exists
+	at com.bank.customermanagement.customer_management_service.serviceImpl.CustomerDetailsServiceImpl.createCustomer(CustomerDetailsServiceImpl.java:36)
+	at com.bank.customermanagement.customer_management_service.controller.CustomerDetailsController.createCustomer(CustomerDetailsController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-02-11 14:40:14 [main] INFO  CustomerManagementServiceApplication - Starting CustomerManagementServiceApplication using Java 17.0.12 with PID 33928 (C:\java Course\Spring\customer-management-service\target\classes started by vidhy in C:\java Course\Spring\customer-management-service)
+2026-02-11 14:40:14 [main] INFO  CustomerManagementServiceApplication - The following 1 profile is active: "dev"
+2026-02-11 14:40:16 [main] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-11 14:40:16 [main] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 115 ms. Found 2 JPA repository interfaces.
+2026-02-11 14:40:17 [main] INFO  TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-02-11 14:40:17 [main] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+2026-02-11 14:40:17 [main] INFO  StandardService - Starting service [Tomcat]
+2026-02-11 14:40:17 [main] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-11 14:40:17 [main] INFO  WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2306 ms
+2026-02-11 14:40:17 [main] INFO  jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-11 14:40:17 [main] INFO  core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-11 14:40:17 [main] INFO  cache - HHH90001028: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+2026-02-11 14:40:18 [main] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-11 14:40:18 [main] INFO  HikariDataSource - HikariPool-1 - Starting...
+2026-02-11 14:40:18 [main] INFO  HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@210d3a42
+2026-02-11 14:40:18 [main] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2026-02-11 14:40:18 [main] WARN  deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-11 14:40:18 [main] INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/retail_banking_db?allowPublicKeyRetrieval=true&useSSL=false]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: retail_banking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-11 14:40:19 [main] INFO  core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-11 14:40:20 [main] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-11 14:40:20 [main] INFO  QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-11 14:40:20 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-11 14:40:21 [main] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+2026-02-11 14:40:21 [main] INFO  TomcatWebServer - Tomcat started on port 8084 (http) with context path '/customer-mgmt'
+2026-02-11 14:40:21 [main] INFO  CustomerManagementServiceApplication - Started CustomerManagementServiceApplication in 6.914 seconds (process running for 7.82)
+2026-02-11 14:40:36 [http-nio-8084-exec-1] INFO  [/customer-mgmt] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-11 14:40:36 [http-nio-8084-exec-1] INFO  DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-11 14:40:36 [http-nio-8084-exec-1] INFO  DispatcherServlet - Completed initialization in 3 ms
+2026-02-11 14:40:37 [http-nio-8084-exec-1] INFO  CustomerDetailsController - POST /api/customers called
+2026-02-11 14:40:37 [http-nio-8084-exec-1] INFO  CustomerDetailsServiceImpl - Create customer request received. customerCode=CUST1002
+2026-02-11 14:40:37 [http-nio-8084-exec-1] DEBUG SQL - select c1_0.customer_id from customer c1_0 where c1_0.customer_code=? limit ?
+2026-02-11 14:40:37 [http-nio-8084-exec-1] WARN  CustomerDetailsServiceImpl - Customer already exists. customerCode=CUST1002
+2026-02-11 14:40:37 [http-nio-8084-exec-1] ERROR CustomerDetailsServiceImpl - Error while creating customer. customerCode=CUST1002
+java.lang.IllegalArgumentException: Customer code already exists
+	at com.bank.customermanagement.customer_management_service.serviceImpl.CustomerDetailsServiceImpl.createCustomer(CustomerDetailsServiceImpl.java:36)
+	at com.bank.customermanagement.customer_management_service.controller.CustomerDetailsController.createCustomer(CustomerDetailsController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-02-11 14:40:37 [http-nio-8084-exec-1] WARN  GlobalExceptionHandler - Business validation failed: Customer code already exists
+2026-02-11 22:47:42 [main] INFO  CustomerManagementServiceApplication - Starting CustomerManagementServiceApplication using Java 17.0.12 with PID 10416 (C:\java Course\Spring\customer-management-service\target\classes started by vidhy in C:\java Course\Spring\customer-management-service)
+2026-02-11 22:47:42 [main] INFO  CustomerManagementServiceApplication - The following 1 profile is active: "dev"
+2026-02-11 22:47:43 [main] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-11 22:47:44 [main] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 77 ms. Found 2 JPA repository interfaces.
+2026-02-11 22:47:44 [main] INFO  TomcatWebServer - Tomcat initialized with port 8084 (http)
+2026-02-11 22:47:44 [main] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+2026-02-11 22:47:44 [main] INFO  StandardService - Starting service [Tomcat]
+2026-02-11 22:47:44 [main] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-11 22:47:44 [main] INFO  WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1803 ms
+2026-02-11 22:47:45 [main] INFO  jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-11 22:47:45 [main] INFO  core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-11 22:47:45 [main] INFO  cache - HHH90001028: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+2026-02-11 22:47:45 [main] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-11 22:47:45 [main] INFO  HikariDataSource - HikariPool-1 - Starting...
+2026-02-11 22:47:46 [main] INFO  HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35af52dc
+2026-02-11 22:47:46 [main] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2026-02-11 22:47:46 [main] WARN  deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-11 22:47:46 [main] INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/retail_banking_db?allowPublicKeyRetrieval=true&useSSL=false]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: retail_banking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-11 22:47:47 [main] INFO  core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-11 22:47:47 [main] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-11 22:47:47 [main] INFO  QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-11 22:47:47 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-11 22:47:48 [main] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+2026-02-11 22:47:48 [main] INFO  TomcatWebServer - Tomcat started on port 8084 (http) with context path '/customer-mgmt'
+2026-02-11 22:47:48 [main] INFO  CustomerManagementServiceApplication - Started CustomerManagementServiceApplication in 5.99 seconds (process running for 6.893)
+2026-02-11 22:48:04 [http-nio-8084-exec-1] INFO  [/customer-mgmt] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-11 22:48:04 [http-nio-8084-exec-1] INFO  DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-11 22:48:04 [http-nio-8084-exec-1] INFO  DispatcherServlet - Completed initialization in 1 ms
+2026-02-11 22:48:04 [http-nio-8084-exec-1] INFO  CustomerDetailsController - POST /api/customers called
+2026-02-11 22:48:04 [http-nio-8084-exec-1] INFO  CustomerDetailsServiceImpl - Create customer request received. customerCode=CUST1002
+2026-02-11 22:48:04 [http-nio-8084-exec-1] DEBUG SQL - select c1_0.customer_id from customer c1_0 where c1_0.customer_code=? limit ?
+2026-02-11 22:48:04 [http-nio-8084-exec-1] WARN  CustomerDetailsServiceImpl - Customer already exists. customerCode=CUST1002
+2026-02-11 22:48:04 [http-nio-8084-exec-1] ERROR CustomerDetailsServiceImpl - Error while creating customer. customerCode=CUST1002
+java.lang.IllegalArgumentException: Customer code already exists
+	at com.bank.customermanagement.customer_management_service.serviceImpl.CustomerDetailsServiceImpl.createCustomer(CustomerDetailsServiceImpl.java:36)
+	at com.bank.customermanagement.customer_management_service.controller.CustomerDetailsController.createCustomer(CustomerDetailsController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-02-11 22:48:04 [http-nio-8084-exec-1] WARN  GlobalExceptionHandler - Business validation failed: Customer code already exists
