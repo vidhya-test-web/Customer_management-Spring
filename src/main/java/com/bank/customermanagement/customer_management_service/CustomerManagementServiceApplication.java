@@ -11,5 +11,8 @@ public class CustomerManagementServiceApplication {
 	}
 
 }
+<<<<<<< HEAD
 
 // application starts
+=======
+>>>>>>> 94aa4a9f4451b42d060a06eb7affce8947fc3240
